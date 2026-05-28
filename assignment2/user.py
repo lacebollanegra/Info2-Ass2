@@ -21,10 +21,4 @@ class User(ABC):
 
     def __repr__(self):
         return (f"User-Type: {self.get_role}, ID: {self.id}\nName: {self.name}\nEmail: {self.email}\nBirth date: {self.birth_date}\nBirth place: {self.birth_place}")
-        
-    
-
-
-    
-
     

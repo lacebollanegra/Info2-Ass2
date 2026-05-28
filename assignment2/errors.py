@@ -1,0 +1,2 @@
+class NumberNotSuitableError(Exception):
+    pass
