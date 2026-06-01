@@ -14,7 +14,7 @@ class Student(User):
     program: str,
     ) -> None:
         super().__init__(id,name, email, birth_date, birth_place)
-        self.matriculation_id = matriculation_id
+        self._matriculation_id = matriculation_id
         self.program = program
 
     @property

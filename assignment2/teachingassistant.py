@@ -29,6 +29,7 @@ class TeachingAssistant(Student, Professor):
         office: str,
         supervised_course: Course,
     ) -> None:
+        
         Student.__init__(
             self,
             id,
@@ -40,8 +41,16 @@ class TeachingAssistant(Student, Professor):
             program,
         )
 
-        self.department = department
-        self.office = office
+        Professor.__init__(
+            self,
+            id,
+            name,
+            email,
+            birth_date,
+            birth_place,
+            department,
+            office)
+
         self.supervised_course = supervised_course
 
     @property
