@@ -3,7 +3,7 @@
 # MatNr 1:       01234567
 # Author 2:      Flo 1
 # MatNr 2:       12403729
-# Author 3:      Flo 2
+# Author 3:      Florian Faedler
 # MatNr 3:       12422306
 # File:          grade.py
 # Description:   Contains the Grade class.
