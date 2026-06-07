@@ -9,3 +9,7 @@
 # Description:   Contains the Enrollment class.
 # Comments:      nothing to add.
 ################################################################################
+
+class Enrollment:
+    def __init__(self):
+        pass
