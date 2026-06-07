@@ -1,3 +1,15 @@
+################################################################################
+# Author 1:      Simon Ehart
+# MatNr 1:       12438518
+# Author 2:      Flo 1
+# MatNr 2:       12403729
+# Author 3:      Flo 2
+# MatNr 3:       01234567
+# File:          student.py
+# Description:   Contains the Student class.
+# Comments:      nothing to add.
+################################################################################
+
 from assignment2.user import User
 from assignment2.errors import NumberNotSuitableError
 
