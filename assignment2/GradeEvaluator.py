@@ -15,29 +15,32 @@ from typing import TYPE_CHECKING
 
 if TYPE_CHECKING:
     from student import Student
-    from course import Course
-    from grade import Grade
+    from enrollment import Enrollment
 
-class Enrollment:
-    total_enrollments: int = 0
 
-    def __init__(self, student: Student, course: Course, semester: str):
-        self.student = student
-        self.course = course
-        self.semester = semester
-        self.grades: list[Grade] = []
-        Enrollment.total_enrollments += 1
+class GradeEvaluator:
+    def __init__(self, threshold: float, passing_label: str = "Pass"):
+        self.threshold = threshold
+        self.passing_label = passing_label
 
-    @classmethod
-    def enrollment_summary(cls) -> str:
-        return f"Total number of enrollments: {cls.total_enrollments}"
+    def __call__(self, enrollments: list[Enrollment]) -> list[Student]:
+        student_grades: dict[Student, list[float]] = {}
 
-    def __lshift__(self, grade: Grade) -> Enrollment:
-        self.grades.append(grade)
-        return self
+        for enrollment in enrollments:
+            if enrollment.student not in student_grades:
+                student_grades[enrollment.student] = []
+            for grade in enrollment.grades:
+                student_grades[enrollment.student].append(grade.value)
 
-    def __len__(self) -> int:
-        return len(self.grades)
+        passing_students: list[Student] = []
 
-    def __call__(self, threshold: float) -> list[Grade]:
-        return [g for g in self.grades if g.value >= threshold]
+        for student, grades in student_grades.items():
+            if grades:
+                average = sum(grades) / len(grades)
+                if average >= self.threshold:
+                    passing_students.append(student)
+
+        return passing_students
+
+    def __repr__(self) -> str:
+        return f"GradeEvaluator(threshold={self.threshold}, passing_label='{self.passing_label}')"
