@@ -29,7 +29,7 @@ class TeachingAssistant(Student, Professor):
         office: str,
         supervised_course: Course,
     ) -> None:
-        
+
         Student.__init__(
             self,
             id,
@@ -41,15 +41,7 @@ class TeachingAssistant(Student, Professor):
             program,
         )
 
-        Professor.__init__(
-            self,
-            id,
-            name,
-            email,
-            birth_date,
-            birth_place,
-            department,
-            office)
+        Professor.__init__(self, id, name, email, birth_date, birth_place, department, office)
 
         self.supervised_course = supervised_course
 
@@ -74,4 +66,3 @@ class TeachingAssistant(Student, Professor):
             f"Office: {self.office}\n"
             f"Supervised course: {self.supervised_course.info()}"
         )
-

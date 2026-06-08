@@ -10,5 +10,6 @@
 # Comments:      nothing to add.
 ################################################################################
 
+
 class NumberNotSuitableError(Exception):
     pass

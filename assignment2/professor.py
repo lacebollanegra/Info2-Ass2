@@ -12,6 +12,7 @@
 
 from assignment2.user import User
 
+
 class Professor(User):
     def __init__(self, id : int, name : str, email : str, birth_date : str, birth_place : str, department : str, office : str):
         super().__init__(id,name, email, birth_date, birth_place)

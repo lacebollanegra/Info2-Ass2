@@ -12,6 +12,7 @@
 
 from abc import ABC, abstractmethod
 
+
 class User(ABC):
     def __init__(self, id: int, name: str, email: str, birth_date: str, birth_place: str) -> None:
         self.id = id

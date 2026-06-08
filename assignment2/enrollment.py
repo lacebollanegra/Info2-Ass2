@@ -11,13 +11,14 @@
 ################################################################################
 
 from __future__ import annotations
+
 from typing import TYPE_CHECKING
 
 # Das verhindert zirkuläre Importe, da wir die Klassen nur für Type Hints brauchen
 if TYPE_CHECKING:
-    from student import Student
     from course import Course
     from grade import Grade
+    from student import Student
 
 
 class Enrollment:

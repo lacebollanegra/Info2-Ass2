@@ -10,8 +10,9 @@
 # Comments:      nothing to add.
 ################################################################################
 
-from assignment2.user import User
 from assignment2.errors import NumberNotSuitableError
+from assignment2.user import User
+
 
 class Student(User):
     
