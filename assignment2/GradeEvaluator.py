@@ -6,8 +6,8 @@
 # Author 3:      Florian Faedler
 # MatNr 3:       12422306
 # File:          grade.py
-# Description:   Contains the Grade class.
-# Comments:      nothing to add.
+# Description:   Contains the Grade class
+# Comments:      nothing to add
 ################################################################################
 
 from __future__ import annotations

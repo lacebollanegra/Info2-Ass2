@@ -7,57 +7,37 @@
 # MatNr 3:       12422306
 # File:          grade.py
 # Description:   Contains the Grade class.
-# Comments:      nothing to add.
+# Comments:      Linking a student to a course for a specific semester and managing their grades
 ################################################################################
 
 from __future__ import annotations
 from typing import TYPE_CHECKING
 
-# Das verhindert zirkuläre Importe, da wir die Klassen nur für Type Hints brauchen
 if TYPE_CHECKING:
     from student import Student
     from course import Course
     from grade import Grade
 
-
 class Enrollment:
-    # Klassenattribut (Falle 2 gelöst: Zählt über alle Instanzen hinweg)
     total_enrollments: int = 0
 
     def __init__(self, student: Student, course: Course, semester: str):
-        # Aggregation: student und course werden von außen übergeben
         self.student = student
         self.course = course
         self.semester = semester
-
-        # Komposition: Die Liste wird zwingend HIER innen erstellt,
-        # sie existiert nicht unabhängig vom Enrollment
         self.grades: list[Grade] = []
-
-        # Klassenattribut bei jeder neuen Instanziierung erhöhen
         Enrollment.total_enrollments += 1
 
     @classmethod
     def enrollment_summary(cls) -> str:
-        # Klassenmethode (Falle 3 gelöst)
         return f"Total number of enrollments: {cls.total_enrollments}"
 
-    # --- Magic Methods ---
-
     def __lshift__(self, grade: Grade) -> Enrollment:
-        """Fügt eine Note über den << Operator hinzu."""
         self.grades.append(grade)
-        # return self ist Best Practice, damit man verketten kann:
-        # enrollment << grade1 << grade2
         return self
 
     def __len__(self) -> int:
-        """Gibt die Anzahl der gespeicherten Noten zurück."""
         return len(self.grades)
 
     def __call__(self, threshold: float) -> list[Grade]:
-        """
-        Macht das Objekt aufrufbar. Gibt alle Noten zurück,
-        die größer oder gleich dem threshold sind.
-        """
         return [g for g in self.grades if g.value >= threshold]
