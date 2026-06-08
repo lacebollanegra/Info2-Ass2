@@ -44,7 +44,4 @@ class Grade(ExportableMixin):
         return self.type == other.type and self.value == other.value
 
     def __repr__(self) -> str:
-        return (
-            f"Grade(type={self.type!r}, value={self.value!r}, "
-            f"date={self.date!r}, retry={self.retry!r})"
-        )
+        return f"Grade(type={self.type!r}, value={self.value!r}, date={self.date!r}, retry={self.retry!r})"

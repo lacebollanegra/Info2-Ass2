@@ -10,6 +10,7 @@
 # Comments:      nothing to add.
 ################################################################################
 
+
 class ComparableMixin:
     _compare_key: str
 

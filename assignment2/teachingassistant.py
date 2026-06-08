@@ -18,17 +18,17 @@ from assignment2.user import User
 
 class TeachingAssistant(Student, Professor):
     def __init__(
-            self,
-            user_id: int,
-            name: str,
-            email: str,
-            birth_date: str,
-            birth_place: str,
-            matriculation_id: int,
-            program: str,
-            department: str,
-            office: str,
-            supervised_course: Course,
+        self,
+        user_id: int,
+        name: str,
+        email: str,
+        birth_date: str,
+        birth_place: str,
+        matriculation_id: int,
+        program: str,
+        department: str,
+        office: str,
+        supervised_course: Course,
     ) -> None:
         User.__init__(self, user_id, name, email, birth_date, birth_place)
 
@@ -59,4 +59,3 @@ class TeachingAssistant(Student, Professor):
             f"Office: {self.office}\n"
             f"Supervised course: {self.supervised_course.info()}"
         )
-

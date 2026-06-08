@@ -12,24 +12,24 @@
 
 from assignment2.user import User
 
+
 class Professor(User):
     def __init__(
-            self,
-            user_id: int,
-            name: str,
-            email: str,
-            birth_date: str,
-            birth_place: str,
-            department: str,
-            office: str,
+        self,
+        user_id: int,
+        name: str,
+        email: str,
+        birth_date: str,
+        birth_place: str,
+        department: str,
+        office: str,
     ) -> None:
         super().__init__(user_id, name, email, birth_date, birth_place)
         self.department = department
         self.office = office
 
     def get_email_signature(self) -> str:
-        signature = f"Kind regards,\n{self.name}\n{10 * "-"}\nOffice {self.office}"
-        return signature
+        return f"Kind regards,\n{self.name}\n{10 * " - "}\nOffice {self.office}"
 
     @property
     def role(self) -> str:
@@ -47,7 +47,3 @@ class Professor(User):
             f"Department: {self.department}\n"
             f"Office: {self.office}"
         )
-    
-
-    
-    

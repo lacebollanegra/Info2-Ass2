@@ -69,8 +69,8 @@ def main() -> None:
     print("\n3. Grading")
 
     for enrollment in enrollments:
-        enrollment << Grade("Midterm", 4.0, date(2026, 5, 20), 0)
-        enrollment << Grade("Final", 5.0, date(2026, 6, 10), 0)
+        _ = enrollment << Grade("Midterm", 4.0, date(2026, 5, 20), 0)
+        _ = enrollment << Grade("Final", 5.0, date(2026, 6, 10), 0)
 
     print(enrollment1)
 

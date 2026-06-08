@@ -10,9 +10,10 @@
 # Comments:      nothing to add.
 ################################################################################
 
-from assignment2.user import User
 from assignment2.errors import NumberNotSuitableError
 from assignment2.mixins import ComparableMixin
+from assignment2.user import User
+
 
 class Student(ComparableMixin, User):
     _compare_key = "name"
@@ -43,8 +44,7 @@ class Student(ComparableMixin, User):
 
     def get_email_signature(self) -> str:
         line = "-" * 10
-        signature = f"Yours sincerely,\n{self.name}\n{line}"
-        return signature
+        return f"Yours sincerely,\n{self.name}\n{line}"
 
     @property
     def role(self) -> str:
