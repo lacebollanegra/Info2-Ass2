@@ -1,48 +1,41 @@
 ################################################################################
 # Author 1:      Simon Ehart
 # MatNr 1:       12438518
-# Author 2:      Flo 1
+# Author 2:      Florian Koeberl
 # MatNr 2:       12403729
-# Author 3:      Flo 2
-# MatNr 3:       01234567
+# Author 3:      Florian Faedler
+# MatNr 3:       12422306
 # File:          teachingassistant.py
-# Description:   Contains the TeachingAssistant class.
+# Description:   Contains the teachingAssistant class.
 # Comments:      nothing to add.
 ################################################################################
 
 from assignment2.course import Course
 from assignment2.professor import Professor
 from assignment2.student import Student
+from assignment2.user import User
 
 
 class TeachingAssistant(Student, Professor):
     def __init__(
-        self,
-        id: int,
-        name: str,
-        email: str,
-        birth_date: str,
-        birth_place: str,
-        matriculation_id: int,
-        program: str,
-        department: str,
-        office: str,
-        supervised_course: Course,
-    ) -> None:
-
-        Student.__init__(
             self,
-            id,
-            name,
-            email,
-            birth_date,
-            birth_place,
-            matriculation_id,
-            program,
-        )
+            user_id: int,
+            name: str,
+            email: str,
+            birth_date: str,
+            birth_place: str,
+            matriculation_id: int,
+            program: str,
+            department: str,
+            office: str,
+            supervised_course: Course,
+    ) -> None:
+        User.__init__(self, user_id, name, email, birth_date, birth_place)
 
-        Professor.__init__(self, id, name, email, birth_date, birth_place, department, office)
-
+        self.matriculation_id = matriculation_id
+        self.program = program
+        self.department = department
+        self.office = office
         self.supervised_course = supervised_course
 
     @property
@@ -66,3 +59,4 @@ class TeachingAssistant(Student, Professor):
             f"Office: {self.office}\n"
             f"Supervised course: {self.supervised_course.info()}"
         )
+

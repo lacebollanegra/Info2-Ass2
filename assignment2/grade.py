@@ -1,12 +1,12 @@
 ################################################################################
 # Author 1:      Simon Ehart
-# MatNr 1:       12438518
+# MatNr 1:       01234567
 # Author 2:      Flo 1
 # MatNr 2:       12403729
 # Author 3:      Florian Faedler
 # MatNr 3:       12422306
 # File:          grade.py
-# Description:   Contains the Grade class.
+# Description:   Contains the grade class.
 # Comments:      nothing to add.
 ################################################################################
 
@@ -14,8 +14,10 @@ from __future__ import annotations
 
 from datetime import date
 
+from assignment2.mixins import ExportableMixin
 
-class Grade:
+
+class Grade(ExportableMixin):
     def __init__(self, grade_type: str, value: float, grade_date: date, retry: int) -> None:
         self.type = grade_type
         self.value = value
@@ -42,4 +44,7 @@ class Grade:
         return self.type == other.type and self.value == other.value
 
     def __repr__(self) -> str:
-        return f"Grade(type={self.type!r}, value={self.value!r}, " f"date={self.date!r}, retry={self.retry!r})"
+        return (
+            f"Grade(type={self.type!r}, value={self.value!r}, "
+            f"date={self.date!r}, retry={self.retry!r})"
+        )

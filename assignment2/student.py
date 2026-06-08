@@ -1,33 +1,34 @@
 ################################################################################
 # Author 1:      Simon Ehart
 # MatNr 1:       12438518
-# Author 2:      Flo 1
+# Author 2:      Florian Koeberl
 # MatNr 2:       12403729
-# Author 3:      Flo 2
-# MatNr 3:       01234567
+# Author 3:      Florian Faedler
+# MatNr 3:       12422306
 # File:          student.py
 # Description:   Contains the Student class.
 # Comments:      nothing to add.
 ################################################################################
 
-from assignment2.errors import NumberNotSuitableError
 from assignment2.user import User
+from assignment2.errors import NumberNotSuitableError
+from assignment2.mixins import ComparableMixin
 
+class Student(ComparableMixin, User):
+    _compare_key = "name"
 
-class Student(User):
-    
     def __init__(
-    self,
-    id: int,
-    name: str,
-    email: str,
-    birth_date: str,
-    birth_place: str,
-    matriculation_id: int,
-    program: str,
+        self,
+        user_id: int,
+        name: str,
+        email: str,
+        birth_date: str,
+        birth_place: str,
+        matriculation_id: int,
+        program: str,
     ) -> None:
-        super().__init__(id,name, email, birth_date, birth_place)
-        self._matriculation_id = matriculation_id
+        super().__init__(user_id, name, email, birth_date, birth_place)
+        self.matriculation_id = matriculation_id
         self.program = program
 
     @property
@@ -41,18 +42,23 @@ class Student(User):
         self._matriculation_id = matriculation_id
 
     def get_email_signature(self) -> str:
-        signature = f"Yours sincerely,\n {self.name}\n{10* "-"}"
+        line = "-" * 10
+        signature = f"Yours sincerely,\n{self.name}\n{line}"
         return signature
 
     @property
     def role(self) -> str:
         return "Student"
-    
+
     def info(self) -> str:
-        return f"Student-Information:\n{10*"-"}\nID: {self.id}\nName: {self.name}\n Email: {self.email}\n Birthdate: {self.birth_date}\nBirthplace: {self.birth_place}\nMatriculation-ID: {self.matriculation_id}\nProgram: {self.program}"
-    
-
-
-
-
-
+        line = "-" * 10
+        return (
+            f"Student-Information:\n{line}\n"
+            f"ID: {self.id}\n"
+            f"Name: {self.name}\n"
+            f"Email: {self.email}\n"
+            f"Birthdate: {self.birth_date}\n"
+            f"Birthplace: {self.birth_place}\n"
+            f"Matriculation-ID: {self.matriculation_id}\n"
+            f"Program: {self.program}"
+        )
