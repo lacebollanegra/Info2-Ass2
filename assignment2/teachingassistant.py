@@ -1,6 +1,6 @@
 ################################################################################
 # Author 1:      Simon Ehart
-# MatNr 1:       01234567
+# MatNr 1:       12438518
 # Author 2:      Flo 1
 # MatNr 2:       12403729
 # Author 3:      Flo 2
@@ -29,7 +29,7 @@ class TeachingAssistant(Student, Professor):
         office: str,
         supervised_course: Course,
     ) -> None:
-        
+
         Student.__init__(
             self,
             id,
@@ -41,15 +41,7 @@ class TeachingAssistant(Student, Professor):
             program,
         )
 
-        Professor.__init__(
-            self,
-            id,
-            name,
-            email,
-            birth_date,
-            birth_place,
-            department,
-            office)
+        Professor.__init__(self, id, name, email, birth_date, birth_place, department, office)
 
         self.supervised_course = supervised_course
 
@@ -74,4 +66,3 @@ class TeachingAssistant(Student, Professor):
             f"Office: {self.office}\n"
             f"Supervised course: {self.supervised_course.info()}"
         )
-

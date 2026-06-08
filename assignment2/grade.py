@@ -1,6 +1,6 @@
 ################################################################################
 # Author 1:      Simon Ehart
-# MatNr 1:       01234567
+# MatNr 1:       12438518
 # Author 2:      Flo 1
 # MatNr 2:       12403729
 # Author 3:      Florian Faedler
@@ -11,6 +11,7 @@
 ################################################################################
 
 from __future__ import annotations
+
 from datetime import date
 
 
@@ -41,7 +42,4 @@ class Grade:
         return self.type == other.type and self.value == other.value
 
     def __repr__(self) -> str:
-        return (
-            f"Grade(type={self.type!r}, value={self.value!r}, "
-            f"date={self.date!r}, retry={self.retry!r})"
-        )
+        return f"Grade(type={self.type!r}, value={self.value!r}, " f"date={self.date!r}, retry={self.retry!r})"
