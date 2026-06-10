@@ -11,6 +11,7 @@
 ################################################################################
 
 from assignment2.enrollment import Enrollment
+from assignment2.grade import Grade
 from assignment2.student import Student
 
 
@@ -20,20 +21,29 @@ class GradeEvaluator:
         self.passing_label = passing_label
 
     def __call__(self, enrollments: list[Enrollment]) -> list[Student]:
-        passing_students: list[Student] = []
+        students_by_id: dict[int, Student] = {}
+        grades_by_student_id: dict[int, list[Grade]] = {}
 
         for enrollment in enrollments:
-            if len(enrollment.grades) == 0:
+            student_id = enrollment.student.matriculation_id
+
+            students_by_id[student_id] = enrollment.student
+
+            if student_id not in grades_by_student_id:
+                grades_by_student_id[student_id] = []
+
+            grades_by_student_id[student_id].extend(enrollment.grades)
+
+        passing_students: list[Student] = []
+
+        for student_id, grades in grades_by_student_id.items():
+            if len(grades) == 0:
                 continue
 
-            total = 0.0
-            for grade in enrollment.grades:
-                total += grade.value
+            average = sum(grade.value for grade in grades) / len(grades)
 
-            average = total / len(enrollment.grades)
-
-            if average >= self.threshold and enrollment.student not in passing_students:
-                passing_students.append(enrollment.student)
+            if average >= self.threshold:
+                passing_students.append(students_by_id[student_id])
 
         return passing_students
 

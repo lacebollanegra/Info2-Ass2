@@ -20,12 +20,12 @@ class ComparableMixin:
     def __lt__(self, other: object) -> bool:
         if not isinstance(other, self.__class__):
             return NotImplemented
-        return str(self._get_compare_value()) < str(other._get_compare_value())
+        return self._get_compare_value() < other._get_compare_value()
 
     def __le__(self, other: object) -> bool:
         if not isinstance(other, self.__class__):
             return NotImplemented
-        return str(self._get_compare_value()) <= str(other._get_compare_value())
+        return self._get_compare_value() <= other._get_compare_value()
 
     def __eq__(self, other: object) -> bool:
         if not isinstance(other, self.__class__):
